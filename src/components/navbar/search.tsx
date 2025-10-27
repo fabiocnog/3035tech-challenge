@@ -17,6 +17,7 @@ export default function Search({showInput, setShowInput}: SearchProps) {
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || "";
+  const lastNavigated = useRef<string>('');
 
   const debouncedValue = useDebounce(searchTerm, 1000);
 
@@ -25,8 +26,10 @@ export default function Search({showInput, setShowInput}: SearchProps) {
   }, [showInput]);
 
   useEffect(() => {
-    if(debouncedValue.trim().length >= 2 && document.activeElement === inputRef.current){
-      navigate(`/search?q=${encodeURIComponent(debouncedValue.trim())}`);
+    const value = debouncedValue.trim();
+    if(value.length >= 2 && value !== lastNavigated.current && document.activeElement === inputRef.current){
+      lastNavigated.current = value;
+      navigate(`/search?q=${encodeURIComponent(value)}`);
     }
   }, [debouncedValue, navigate]);
 
