@@ -22,6 +22,7 @@ export default defineConfig({
   },
   build: {
     rollupOptions: {
+      input: '/index.html',
       output: {
         manualChunks: {
           react: ['react', 'react-dom', 'react-router'],
@@ -30,4 +31,9 @@ export default defineConfig({
       },
     },
   },
+  server: {
+    fs: {
+      strict: false
+    }
+  }
 })
