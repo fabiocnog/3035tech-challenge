@@ -9,12 +9,13 @@ vi.mock("@/components/content/homeContent", () => ({
 }))
 
 describe("Home Page", () => {
-  it("renders HomeContent", () => {
+  it("renders HomeContent", async () => {
     render(
       <Suspense fallback={<div>Loading...</div>}>
         <Home />
       </Suspense>
     )
-    expect(screen.findByText("HomeContent mock")).toBeInTheDocument()
+    const element = await screen.findByText("HomeContent mock")
+    expect(element).toBeInTheDocument()
   })
 })
