@@ -12,14 +12,13 @@ type SearchProps = {
 }
 
 export default function Search({showInput, setShowInput}: SearchProps) { 
-  // const [showInput, setShowInput] = useState<boolean>(false);
   const [searchTerm, setSearchTerm] = useState<string>('');
   const inputRef = useRef<HTMLInputElement>(null);
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('q') || "";
 
-  const debouncedValue = useDebounce(searchTerm, 500);
+  const debouncedValue = useDebounce(searchTerm, 1000);
 
   useEffect(() => {
     if(showInput) inputRef.current?.focus();
