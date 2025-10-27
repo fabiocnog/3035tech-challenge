@@ -38,7 +38,7 @@ Aplicação SPA de catálogo de filmes desenvolvida como parte de um desafio té
 
 1. Clone o repositório:
 ```bash
-git clone <url-do-repositorio>
+git clone git@github.com:fabiocnog/3035tech-challenge.git
 cd 3035tech-challenge
 ```
 
