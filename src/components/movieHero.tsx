@@ -10,9 +10,10 @@ export default function MovieHero({movie}: {movie: MovieDetailsType}) {
   const bgImageUrl = `https://image.tmdb.org/t/p/original${movie.backdrop_path}`;
   return (
     <div className="w-full aspect-3/4 sm:aspect-4/3 lg:aspect-5/2 overflow-hidden flex flex-col items-start justify-end relative" >
+      <img src={bgImageUrl} className="hidden" onLoad={() => setImageLoaded(true)} />
       <motion.div 
         className="absolute w-full h-full bg-cover bg-top"
-        style={imageLoaded ? {backgroundImage: `url(https://image.tmdb.org/t/p/original${movie.backdrop_path})`} : {}}
+        style={imageLoaded ? {backgroundImage: `url(${bgImageUrl})`} : {}}
         initial={{ opacity: 0 }}
         animate={{ opacity: imageLoaded ? 1 : 0 }}
         transition={{ duration: 0.5 }}>  
@@ -31,7 +32,6 @@ export default function MovieHero({movie}: {movie: MovieDetailsType}) {
           </motion.div>
         }
       </AnimatePresence>
-      <img src={bgImageUrl} className="hidden" onLoad={() => setImageLoaded(true)} />
       <div className="px-4 sm:px-8 flex flex-col w-full relative z-10">
         {movie.images.logos.length > 0 &&
           <motion.div

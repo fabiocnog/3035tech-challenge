@@ -9,8 +9,7 @@ export default defineConfig({
   resolve: {
     alias: {
       "@": path.resolve(__dirname, "./src"),
-    },
-    conditions: ['browser'],
+    }
   },
   // @ts-expect-error: Vitest adds this field at runtime
   test: {
