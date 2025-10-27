@@ -46,7 +46,7 @@ describe("Search component", () => {
 
     await act(async () => {
       fireEvent.change(input, { target: { value: "Matrix" } })
-      await new Promise(r => setTimeout(r, 600))
+      await new Promise(r => setTimeout(r, 1100))
     })
 
     expect(mockNavigate).toHaveBeenCalledWith("/search?q=Matrix")
