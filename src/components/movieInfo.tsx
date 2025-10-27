@@ -2,6 +2,7 @@ import type { MovieDetailsType } from "@/schema/movie";
 import MovieTrailer from "./movieTrailer";
 import MovieInfoItem from "./movieInfoItem";
 import { formatDate } from "@/lib/utils";
+import MoviePoster from "./moviePoster";
 
 export default function MovieInfo({movie}: {movie: MovieDetailsType}) {
   const trailer = movie.videos.results.find(
@@ -16,6 +17,7 @@ export default function MovieInfo({movie}: {movie: MovieDetailsType}) {
           {trailer && (
             <MovieTrailer trailer={trailer} />
           )}
+          {movie.images.posters.length > 0 && <MoviePoster movie={movie} />}
         </div>
         <div className="flex flex-col gap-4">
           {movie.runtime && (
